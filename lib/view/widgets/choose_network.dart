@@ -1,11 +1,16 @@
 import 'package:flutter/material.dart';
 import 'show_balance_ethio_telecom.dart';
 import 'show_balance_safari.dart';
-import '../../controller/ussd_request.dart';
+import 'package:safaritel/controller/permission_handler.dart';
 import './safarcom_recharge.dart';
 import 'ethio_telecom_recharge_loading_widget.dart';
 import '../../controller/request_cubit.dart';
 import 'call_me.dart';
+makeRequest(String code) async{
+    if(await isPermissionGranted()){
+      cubit.ussdRequest(code);
+    }
+  }
 chooseNet(
     BuildContext context,
     bool toCheckBalance,

@@ -1,6 +1,5 @@
 import '../../controller/request_cubit.dart';
 import 'package:flutter/material.dart';
-import 'package:safaritel/controller/permission_handler.dart';
 import 'package:safaritel/view/screens/callme_screen.dart';
 import 'package:safaritel/view/screens/recharge_screen.dart';
 import 'package:safaritel/view/screens/transfer_screen.dart';
@@ -18,11 +17,6 @@ class AppScreenState extends State<AppScreen>{
   void dispose() {
     cubit.close();
     super.dispose();
-  }
-  makeRequest(String code) async{
-    if(await isPermissionGranted()){
-      cubit.ussdRequest(code);
-    }
   }
   @override
   Widget build(BuildContext context){

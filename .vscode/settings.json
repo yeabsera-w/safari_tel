@@ -1,4 +1,6 @@
 {
     "cmake.configureOnOpen": false,
-    "cmake.sourceDirectory": "C:/Users/yeabs/code/Dev/Flutter/safaritel/windows/flutter"
+    "cmake.sourceDirectory": "C:/Users/yeabs/code/Dev/Flutter/safaritel/windows/flutter",
+    "git.decorations.enabled": false,
+    "git.enabled": true,
 }
