@@ -82,7 +82,7 @@ class _TransferScreenState extends State<TransferScreen> {
                     child: GestureDetector(
                       onTap: () {
                         if(contactController.text.isNotEmpty && amountController.text.isNotEmpty){
-                        widget.callback(
+                        widget.callback(context,
                           false,
                           false,
                           true,

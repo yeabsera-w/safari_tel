@@ -69,12 +69,13 @@ chooseNet(
                         child: Image.asset("lib/images/ethioTelecom.png")
                       ),
                       const Text("Ethio Telecom")
-                    ],
-                  ),
-               )
+                  ],
+                ),
+              )
             ],
           ),
         ),
       );
-    });
-  }
+    }
+  );
+}
