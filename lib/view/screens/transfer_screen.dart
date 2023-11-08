@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:safaritel/controller/permission_handler.dart';
+import 'package:flutter_contacts/flutter_contacts.dart';
 import 'package:toast/toast.dart';
 class TransferScreen extends StatefulWidget {
   final dynamic callback;
@@ -6,19 +8,19 @@ class TransferScreen extends StatefulWidget {
       required this.callback,
       super.key,
     }
-    );
-
+  );
   @override
   State<TransferScreen> createState() => _TransferScreenState();
 }
 
 class _TransferScreenState extends State<TransferScreen> {
   @override
-  Widget build(BuildContext context,) {
+  Widget build(BuildContext context) {
     TextEditingController contactController = TextEditingController();
     TextEditingController amountController = TextEditingController();
-    return  Scaffold(
-        backgroundColor: const Color.fromARGB(255, 245, 255, 243),
+    Contact? _contact;
+    return Scaffold(
+        backgroundColor: const Color.fromARGB(255, 229, 247, 226),
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -32,18 +34,39 @@ class _TransferScreenState extends State<TransferScreen> {
                   child: SizedBox(
                     height: 60,
                     width: MediaQuery.of(context).size.width/1.5,
-                    child:  TextField(
-                      controller: contactController,
-                      decoration: InputDecoration(
-                        label: const Text("Phone number"),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(8),
-                          borderSide: const BorderSide(
+                    child:  Row(
+                      children: [
+                        Expanded(
+                          child: TextField(
+                            controller: contactController,
+                            decoration: InputDecoration(
+                              label: const Text("Phone number"),
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(8),
+                                borderSide: const BorderSide(
+                                  color: Colors.green,
+                                  width: 10
+                                  )
+                              )
+                            ),
+                          ),
+                        ),
+                         Container(
+                          margin: EdgeInsets.only(left: MediaQuery.of(context).size.width / 50),
+                           child:  IconButton(
+                            icon: const Icon(Icons.contacts),
                             color: Colors.green,
-                            width: 10
-                            )
-                        )
-                      ),
+                            iconSize: 40, onPressed: () async{ 
+                              if(await isCallPermissionGranted()){
+                                 _contact = await FlutterContacts.openExternalPick();
+                                 setState(() {
+                                   contactController.text = _contact!.phones.first.toString();
+                                 });
+                              }
+                             },
+                            ),
+                         )
+                      ],
                     ),
                   ),
                 ),

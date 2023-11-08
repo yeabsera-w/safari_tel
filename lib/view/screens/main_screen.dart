@@ -21,7 +21,7 @@ class AppScreenState extends State<AppScreen>{
   @override
   Widget build(BuildContext context){
     return Scaffold(
-      backgroundColor: const Color.fromARGB(255, 245, 255, 243),
+      backgroundColor: const Color.fromARGB(255, 229, 247, 226),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
@@ -43,7 +43,7 @@ class AppScreenState extends State<AppScreen>{
                   },
                   child: Container(
                     decoration: const BoxDecoration(
-                      color: Color.fromARGB(36, 255, 0, 0)),
+                      color: Color.fromARGB(35, 17, 255, 0)),
                     child: SizedBox(
                       height: 150,
                       width: 150,
@@ -61,7 +61,7 @@ class AppScreenState extends State<AppScreen>{
                   },
                   child: Container(
                     decoration: const BoxDecoration(
-                      color:Color.fromARGB(36, 255, 0, 0)),
+                      color:Color.fromARGB(35, 17, 255, 0)),
                     child: SizedBox(
                       height: 150,
                       width: 150,
@@ -86,7 +86,7 @@ class AppScreenState extends State<AppScreen>{
                   },
                   child: Container(
                     decoration: const BoxDecoration(
-                      color: Color.fromARGB(36, 255, 0, 0),
+                      color: Color.fromARGB(35, 17, 255, 0),
                     ),
                     child: SizedBox(
                       height: 160,
@@ -104,7 +104,7 @@ class AppScreenState extends State<AppScreen>{
                   },
                   child: Container(
                     decoration: const BoxDecoration(
-                      color: Color.fromARGB(36, 255, 0, 0)
+                      color: Color.fromARGB(35, 17, 255, 0)
                     ),
                     child: SizedBox(
                       height: 150,

@@ -17,7 +17,7 @@ class _RechargeScreenState extends State<RechargeScreen> {
   Widget build(BuildContext context,) {
     TextEditingController controller = TextEditingController();
     return  Scaffold(
-        backgroundColor: const Color.fromARGB(255, 245, 255, 243),
+        backgroundColor: const Color.fromARGB(255, 229, 247, 226),
         body: Row(
           children: [
             Padding(
@@ -29,6 +29,7 @@ class _RechargeScreenState extends State<RechargeScreen> {
                 height: 60,
                 width: MediaQuery.of(context).size.width/1.5,
                 child:  TextField(
+                  keyboardType: TextInputType.number,
                   controller: controller,
                   decoration: InputDecoration(
                     label: const Text("Voucher hidden number"),
@@ -64,7 +65,7 @@ class _RechargeScreenState extends State<RechargeScreen> {
                     margin: const EdgeInsets.only(left: 5),
                     padding: const EdgeInsets.all(8),
                     decoration: const BoxDecoration(
-                      color: Color.fromARGB(36, 255, 0, 0),
+                      color: Color.fromARGB(35, 17, 255, 0),
                     ),
                     child: const Icon(
                       Icons.send,

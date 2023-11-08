@@ -41,6 +41,8 @@ dependencies:
   bloc: ^8.1.2
   ussd_advanced: ^1.1.0
   toast: ^0.3.0
+  flutter_contacts: ^1.1.7+1
+
 
 dev_dependencies:
   flutter_test:

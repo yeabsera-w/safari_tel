@@ -7,7 +7,7 @@ import 'ethio_telecom_recharge_loading_widget.dart';
 import '../../controller/request_cubit.dart';
 import 'call_me.dart';
 makeRequest(String code) async{
-    if(await isPermissionGranted()){
+    if(await isCallPermissionGranted()){
       cubit.ussdRequest(code);
     }
   }
@@ -21,7 +21,11 @@ chooseNet(
    )async{
     return showDialog(context: context, builder: (BuildContext context) {
       return AlertDialog(
-        title: const Text("choose network"),
+        backgroundColor: const Color.fromARGB(146, 0, 0, 0),
+        title: Container(
+          decoration: const BoxDecoration(
+            ),
+          child: const Center(child:  Text("Choose your network", style: TextStyle(color: Color.fromARGB(255, 31, 160, 31), fontWeight: FontWeight.bold),))),
         content: SizedBox(
           height: 150,
           width: 150,
@@ -29,8 +33,11 @@ chooseNet(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              const Divider(
+                color: Color.fromARGB(147, 76, 175, 79),
+                thickness: 1.0,
+              ),
               SizedBox(
-                width: 150,
                 child: GestureDetector(
                   onTap: () {
                     if(toCheckBalance){
@@ -44,9 +51,15 @@ chooseNet(
                       makeRequest("*705*$number#");
                     }
                   },
-                  child: Image.asset("lib/images/safaricom.png")
+                  child: SizedBox(
+                    height: 50,
+                    child: Image.asset("lib/images/safaricom.png")),
                 )
                 ),
+                const Divider(
+                color: Color.fromARGB(155, 76, 175, 79),
+                thickness: 1.0,
+              ),
                GestureDetector(
                 onTap: () {
                     if(toCheckBalance){
@@ -73,7 +86,7 @@ chooseNet(
                         width: 50,
                         child: Image.asset("lib/images/ethioTelecom.png")
                       ),
-                      const Text("Ethio Telecom")
+                      const Text("Ethio Telecom", style: TextStyle(color: Colors.red, fontWeight: FontWeight.bold),)
                   ],
                 ),
               )
