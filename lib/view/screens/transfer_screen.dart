@@ -18,7 +18,7 @@ class _TransferScreenState extends State<TransferScreen> {
   Widget build(BuildContext context) {
     TextEditingController contactController = TextEditingController();
     TextEditingController amountController = TextEditingController();
-    Contact? _contact;
+    Contact? contact;
     return Scaffold(
         backgroundColor: const Color.fromARGB(255, 229, 247, 226),
         body: Column(
@@ -52,16 +52,16 @@ class _TransferScreenState extends State<TransferScreen> {
                           ),
                         ),
                          Container(
-                          margin: EdgeInsets.only(left: MediaQuery.of(context).size.width / 50),
+                          padding: EdgeInsets.only(left: MediaQuery.of(context).size.width / 50),
                            child:  IconButton(
                             icon: const Icon(Icons.contacts),
                             color: Colors.green,
                             iconSize: 40, onPressed: () async{ 
-                              if(await isCallPermissionGranted()){
-                                 _contact = await FlutterContacts.openExternalPick();
-                                 setState(() {
-                                   contactController.text = _contact!.phones.first.toString();
-                                 });
+                              if(await isContactPermissionGranted()){
+                                 contact = await FlutterContacts.openExternalPick();
+                                  setState(() {
+                                    contactController.text = contact!.phones.first.number;
+                                  });
                               }
                              },
                             ),
@@ -119,7 +119,7 @@ class _TransferScreenState extends State<TransferScreen> {
                         }else if(contactController.text.isEmpty){
                           ToastContext toastContext = ToastContext();
                           toastContext.init(context);
-                          Toast.show("Please enter the contact!", duration: 2);
+                          Toast.show("Please enter the contact phone number!", duration: 2);
                         }else if(amountController.text.isEmpty){
                           ToastContext toastContext = ToastContext();
                           toastContext.init(context);
