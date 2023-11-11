@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:safaritel/controller/format_phone_number.dart';
 import 'package:safaritel/controller/permission_handler.dart';
 import 'package:flutter_contacts/flutter_contacts.dart';
+import 'package:safaritel/view/widgets/select_phone_number.dart';
 import 'package:toast/toast.dart';
 class TransferScreen extends StatefulWidget {
   final dynamic callback;
@@ -58,10 +60,14 @@ class _TransferScreenState extends State<TransferScreen> {
                             color: Colors.green,
                             iconSize: 40, onPressed: () async{ 
                               if(await isContactPermissionGranted()){
-                                 contact = await FlutterContacts.openExternalPick();
-                                  setState(() {
-                                    contactController.text = contact!.phones.first.number;
-                                  });
+                                contact = await FlutterContacts.openExternalPick();
+                                if(contact!.phones.length > 1){
+                                  // ignore: use_build_context_synchronously
+                                  contactController.text = await selectNumber(contact!.phones, context, contact!.photo);
+                                }else{
+                                  // ignore: use_build_context_synchronously
+                                  contactController.text = formatPhoneNumber(contact!.phones.first.number);
+                                }
                               }
                              },
                             ),
