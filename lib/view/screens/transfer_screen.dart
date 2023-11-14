@@ -22,6 +22,17 @@ class _TransferScreenState extends State<TransferScreen> {
     Contact? contact;
     return Scaffold(
         backgroundColor: const Color.fromARGB(255, 229, 247, 226),
+        appBar: AppBar(
+        title: const Text(
+          "Transfer",
+          style: TextStyle(
+            color: Colors.white,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        centerTitle: true,
+        backgroundColor: Colors.green,
+      ),
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -34,8 +45,8 @@ class _TransferScreenState extends State<TransferScreen> {
                     ),
                   child: SizedBox(
                     height: 60,
-                    width: MediaQuery.of(context).size.width/1.5,
-                    child:  Row(
+                    width: MediaQuery.of(context).size.width/1.7,
+                    child:  Stack(
                       children: [
                         Expanded(
                           child: TextField(
@@ -52,24 +63,27 @@ class _TransferScreenState extends State<TransferScreen> {
                             ),
                           ),
                         ),
-                        Container(
-                          padding: EdgeInsets.only(left: MediaQuery.of(context).size.width / 50),
-                            child:  IconButton(
-                            icon: const Icon(Icons.person),
-                            color: Colors.green,
-                            iconSize: 40, onPressed: () async{ 
-                              if(await isContactPermissionGranted()){
-                                contact = await FlutterContacts.openExternalPick();
-                                // if(contact!.phones.length > 1){
-                                //   // ignore: use_build_context_synchronously
-                                //   selectNumber(contact!.phones, context, contact!.photo);
-                                // }else{
-                                contactController.text = formatPhoneNumber(contact!.phones.first.number);
-                                // }
-                              }
-                              },
-                            ),
-                         )
+                        Positioned(
+                          right: MediaQuery.of(context).size.width / 100,
+                          child: Container(
+                            padding: EdgeInsets.only(left: MediaQuery.of(context).size.width / 50),
+                              child:  IconButton(
+                              icon: const Icon(Icons.person),
+                              color: Colors.green,
+                              iconSize: 40, onPressed: () async{ 
+                                if(await isContactPermissionGranted()){
+                                  contact = await FlutterContacts.openExternalPick();
+                                  // if(contact!.phones.length > 1){
+                                  //   // ignore: use_build_context_synchronously
+                                  //   selectNumber(contact!.phones, context, contact!.photo);
+                                  // }else{
+                                  contactController.text = formatPhoneNumber(contact!.phones.first.number);
+                                  // }
+                                }
+                                },
+                              ),
+                           ),
+                        )
                       ],
                     ),
                   ),

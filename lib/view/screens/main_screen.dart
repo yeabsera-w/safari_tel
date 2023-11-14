@@ -21,6 +21,17 @@ class AppScreenState extends State<AppScreen>{
   @override
   Widget build(BuildContext context){
     return Scaffold(
+      appBar: AppBar(
+        title: const Text(
+          "SafariTel",
+          style: TextStyle(
+            color: Colors.white,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        centerTitle: true,
+        backgroundColor: Colors.green,
+      ),
       backgroundColor: const Color.fromARGB(255, 229, 247, 226),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,

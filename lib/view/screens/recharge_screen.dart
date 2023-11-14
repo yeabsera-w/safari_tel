@@ -18,6 +18,17 @@ class _RechargeScreenState extends State<RechargeScreen> {
     TextEditingController controller = TextEditingController();
     return  Scaffold(
         backgroundColor: const Color.fromARGB(255, 229, 247, 226),
+        appBar: AppBar(
+        title: const Text(
+          "Recharge",
+          style: TextStyle(
+            color: Colors.white,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        centerTitle: true,
+        backgroundColor: Colors.green,
+      ),
         body: Row(
           children: [
             Padding(
