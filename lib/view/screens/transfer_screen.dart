@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:safaritel/controller/format_phone_number.dart';
 import 'package:safaritel/controller/permission_handler.dart';
 import 'package:flutter_contacts/flutter_contacts.dart';
-import 'package:safaritel/view/widgets/select_phone_number.dart';
 import 'package:toast/toast.dart';
 class TransferScreen extends StatefulWidget {
   final dynamic callback;
@@ -53,23 +52,22 @@ class _TransferScreenState extends State<TransferScreen> {
                             ),
                           ),
                         ),
-                         Container(
+                        Container(
                           padding: EdgeInsets.only(left: MediaQuery.of(context).size.width / 50),
-                           child:  IconButton(
-                            icon: const Icon(Icons.contacts),
+                            child:  IconButton(
+                            icon: const Icon(Icons.person),
                             color: Colors.green,
                             iconSize: 40, onPressed: () async{ 
                               if(await isContactPermissionGranted()){
                                 contact = await FlutterContacts.openExternalPick();
-                                if(contact!.phones.length > 1){
-                                  // ignore: use_build_context_synchronously
-                                  contactController.text = await selectNumber(contact!.phones, context, contact!.photo);
-                                }else{
-                                  // ignore: use_build_context_synchronously
-                                  contactController.text = formatPhoneNumber(contact!.phones.first.number);
-                                }
+                                // if(contact!.phones.length > 1){
+                                //   // ignore: use_build_context_synchronously
+                                //   selectNumber(contact!.phones, context, contact!.photo);
+                                // }else{
+                                contactController.text = formatPhoneNumber(contact!.phones.first.number);
+                                // }
                               }
-                             },
+                              },
                             ),
                          )
                       ],
@@ -136,7 +134,7 @@ class _TransferScreenState extends State<TransferScreen> {
                         margin: const EdgeInsets.only(left: 5),
                         padding: const EdgeInsets.all(8),
                         decoration: const BoxDecoration(
-                          color: Color.fromARGB(36, 255, 0, 0),
+                          color: Color.fromARGB(35, 17, 255, 0),
                         ),
                         child: const Icon(
                           Icons.send,
