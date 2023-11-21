@@ -8,17 +8,16 @@ class CallmeScreen extends StatefulWidget {
   const CallmeScreen({
       required this.callback,
       super.key,
-    }
-  );
+    });
 
   @override
   State<CallmeScreen> createState() => _CallmeScreenState();
 }
 
 class _CallmeScreenState extends State<CallmeScreen> {
+  TextEditingController controller = TextEditingController();
   @override
   Widget build(BuildContext context,) {
-    TextEditingController controller = TextEditingController();
     Contact? contact;
     return  Scaffold(
       backgroundColor: const Color.fromARGB(255, 229, 247, 226),
@@ -44,15 +43,11 @@ class _CallmeScreenState extends State<CallmeScreen> {
                   width: MediaQuery.of(context).size.width/1.5,
                   child:  TextField(
                     controller: controller,
-                    autofocus: true,
+                    keyboardType: TextInputType.phone,
                     decoration: InputDecoration(
                       label: const Text("Phone number"),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(8),
-                        borderSide: const BorderSide(
-                          color: Colors.green,
-                          width: 10
-                        )
                       )
                     ),
                   ),

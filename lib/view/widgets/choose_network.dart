@@ -49,6 +49,9 @@ chooseNet(
                       Navigator.pop(context);
                       safaricomRecharge(context);
                       makeRequest("*705*$number#");
+                    }else if(toTransfer){
+                      Navigator.pop(context);
+                      normalUSSDRequest("*706*$number");
                     }
                   },
                   child: SizedBox(
@@ -73,7 +76,7 @@ chooseNet(
                     }
                     else if(toTransfer){
                       Navigator.pop(context);
-                      normalUSSDRequest("*806*$number");
+                      normalUSSDRequest("*806*$number#");
                     }else if(toReqCallMeBack){
                       Navigator.pop(context);
                       callme(context);

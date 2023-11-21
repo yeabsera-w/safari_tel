@@ -15,10 +15,10 @@ class TransferScreen extends StatefulWidget {
 }
 
 class _TransferScreenState extends State<TransferScreen> {
+  TextEditingController contactController = TextEditingController();
+  TextEditingController amountController = TextEditingController();
   @override
   Widget build(BuildContext context) {
-    TextEditingController contactController = TextEditingController();
-    TextEditingController amountController = TextEditingController();
     Contact? contact;
     return Scaffold(
         backgroundColor: const Color.fromARGB(255, 229, 247, 226),
@@ -51,6 +51,7 @@ class _TransferScreenState extends State<TransferScreen> {
                         Expanded(
                           child: TextField(
                             controller: contactController,
+                            keyboardType: TextInputType.phone,
                             decoration: InputDecoration(
                               label: const Text("Phone number"),
                               border: OutlineInputBorder(
@@ -58,7 +59,7 @@ class _TransferScreenState extends State<TransferScreen> {
                                 borderSide: const BorderSide(
                                   color: Colors.green,
                                   width: 10
-                                  )
+                                )
                               )
                             ),
                           ),
@@ -102,6 +103,7 @@ class _TransferScreenState extends State<TransferScreen> {
                     width: MediaQuery.of(context).size.width/4,
                     child:  TextField(
                       controller: amountController,
+                      keyboardType: TextInputType.number,
                       decoration: InputDecoration(
                         label: const Text("Amount"),
                         border: OutlineInputBorder(

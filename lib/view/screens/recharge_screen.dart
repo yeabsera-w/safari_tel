@@ -13,9 +13,9 @@ class RechargeScreen extends StatefulWidget {
 }
 
 class _RechargeScreenState extends State<RechargeScreen> {
+  TextEditingController controller = TextEditingController();
   @override
   Widget build(BuildContext context,) {
-    TextEditingController controller = TextEditingController();
     return  Scaffold(
         backgroundColor: const Color.fromARGB(255, 229, 247, 226),
         appBar: AppBar(
@@ -37,11 +37,16 @@ class _RechargeScreenState extends State<RechargeScreen> {
                 left: MediaQuery.of(context).size.width/15,
                 ),
               child: SizedBox(
-                height: 60,
+                height: MediaQuery.of(context).size.width/5,
                 width: MediaQuery.of(context).size.width/1.5,
                 child:  TextField(
-                  keyboardType: TextInputType.number,
+                  keyboardType: TextInputType.phone,
+                  style: const TextStyle(
+                    color: Colors.green,
+                    fontWeight: FontWeight.bold,
+                  ),
                   controller: controller,
+                  autofocus: true,
                   decoration: InputDecoration(
                     label: const Text("Voucher hidden number"),
                     border: OutlineInputBorder(
@@ -57,7 +62,7 @@ class _RechargeScreenState extends State<RechargeScreen> {
             ),
             Padding(
               padding: EdgeInsets.only(
-                top: MediaQuery.of(context).size.height/3,
+                top: MediaQuery.of(context).size.height/3.2,
                 ),
               child: SizedBox(
                 width: MediaQuery.of(context).size.width/6,
