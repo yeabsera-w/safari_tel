@@ -5,21 +5,23 @@ import 'package:safaritel/view/screens/recharge_screen.dart';
 import 'package:safaritel/view/screens/transfer_screen.dart';
 import '../widgets/choose_network.dart';
 
-class AppScreen extends StatefulWidget{
+class AppScreen extends StatefulWidget {
   const AppScreen({super.key});
   @override
   State<StatefulWidget> createState() {
     return AppScreenState();
   }
 }
-class AppScreenState extends State<AppScreen>{
+
+class AppScreenState extends State<AppScreen> {
   @override
   void dispose() {
     cubit.close();
     super.dispose();
   }
+
   @override
-  Widget build(BuildContext context){
+  Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
@@ -43,41 +45,34 @@ class AppScreenState extends State<AppScreen>{
               children: [
                 GestureDetector(
                   onTap: () {
-                    chooseNet(
-                      context,
-                      true,
-                      false,
-                      false,
-                      false,
-                      ":)"
-                    );
+                    showDialog(
+                        context: context,
+                        builder: ((context) =>
+                            const ChooseNetworkDialog(toCheckBalance: true)));
                   },
                   child: Container(
                     decoration: const BoxDecoration(
-                      color: Color.fromARGB(35, 17, 255, 0)),
+                        color: Color.fromARGB(35, 17, 255, 0)),
                     child: SizedBox(
-                      height: 150,
-                      width: 150,
-                      child: Image.asset("lib/images/check_balance.png")
-                      ),
+                        height: 150,
+                        width: 150,
+                        child: Image.asset("lib/images/check_balance.png")),
                   ),
                 ),
                 GestureDetector(
                   onTap: () {
                     Navigator.push(
-                      context, MaterialPageRoute(
-                        builder: (context)=>  const RechargeScreen(callback: chooseNet,)
-                      )
-                    );
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const RechargeScreen()));
                   },
                   child: Container(
                     decoration: const BoxDecoration(
-                      color:Color.fromARGB(35, 17, 255, 0)),
+                        color: Color.fromARGB(35, 17, 255, 0)),
                     child: SizedBox(
-                      height: 150,
-                      width: 150,
-                      child: Image.asset("lib/images/recharge.png")
-                      ),
+                        height: 150,
+                        width: 150,
+                        child: Image.asset("lib/images/recharge.png")),
                   ),
                 ),
               ],
@@ -89,39 +84,36 @@ class AppScreenState extends State<AppScreen>{
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 GestureDetector(
-                  onTap: (){
+                  onTap: () {
                     Navigator.push(
-                      context, 
-                      MaterialPageRoute(builder:(context) => const TransferScreen(callback: chooseNet,))
-                    );
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const TransferScreen()));
                   },
                   child: Container(
                     decoration: const BoxDecoration(
                       color: Color.fromARGB(35, 17, 255, 0),
                     ),
                     child: SizedBox(
-                      height: 160,
-                      width: 160,
-                      child: Image.asset("lib/images/transfer.png")
-                    ),
+                        height: 160,
+                        width: 160,
+                        child: Image.asset("lib/images/transfer.png")),
                   ),
                 ),
                 GestureDetector(
                   onTap: () {
                     Navigator.push(
-                      context,
-                      MaterialPageRoute(builder:(context) => const CallmeScreen(callback: chooseNet,))
-                    );
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const CallmeScreen()));
                   },
                   child: Container(
                     decoration: const BoxDecoration(
-                      color: Color.fromARGB(35, 17, 255, 0)
-                    ),
+                        color: Color.fromARGB(35, 17, 255, 0)),
                     child: SizedBox(
-                      height: 150,
-                      width: 150,
-                      child: Image.asset("lib/images/call_me_back.png")
-                      ),
+                        height: 150,
+                        width: 150,
+                        child: Image.asset("lib/images/call_me_back.png")),
                   ),
                 ),
               ],
